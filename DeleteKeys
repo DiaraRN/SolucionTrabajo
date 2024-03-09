@@ -1,0 +1,30 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Iterator;
+// hola
+public class DeleteKeys {
+
+    public static void eliminarClavesMenores(Map<String, Integer> hashMap, int valorMinimo) {
+        Iterator<Map.Entry<String, Integer>> iterador = hashMap.entrySet().iterator();
+        while (iterador.hasNext()) {
+            Map.Entry<String, Integer> entry = iterador.next();
+            if (entry.getValue() < valorMinimo) {
+                iterador.remove();
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Map<String, Integer> hashMap = new HashMap<>();
+        hashMap.put("a", 5);
+        hashMap.put("b", 10);
+        hashMap.put("c", 3);
+        hashMap.put("d", 8);
+        
+        System.out.println("HashMap original: " + hashMap);
+        
+        eliminarClavesMenores(hashMap, 6);
+        
+        System.out.println("HashMap después de eliminar claves menores que 6: " + hashMap);
+    }
+}
